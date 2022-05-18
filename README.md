@@ -28,7 +28,7 @@ Test Search
 
 
 I Hope You are Doing Well
-Please Enjoy WWebSurge and Look Out For Updates
+Please Enjoy WebSurge and Look Out For Updates
 ~KingSurge
 
 If you have any suggesstions you can contact me on discord @KingSurge#9182 
