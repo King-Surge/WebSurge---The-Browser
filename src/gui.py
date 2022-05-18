@@ -24,12 +24,12 @@ class MainWindow(QMainWindow):
 		self.status = QStatusBar() 
 
 		navtb = QToolBar("Navigation")
-		navtb.setMovable( False );
+		navtb.setMovable( False )
 		self.addToolBar(navtb)
   
 		self.addToolBarBreak()
 		bnavtb = QToolBar("Navigationa")
-		bnavtb.setMovable( False );
+		bnavtb.setMovable( False )
 		self.addToolBar(bnavtb)
 
 		back_btn = QAction("⏪", self)
@@ -88,7 +88,7 @@ class MainWindow(QMainWindow):
 		bnavtb.addAction(bookb_btn)
 		bnavtb.addSeparator()
   
-		bookc_btn = QAction("📰Bing", self)
+		bookc_btn = QAction("📰duckduckgo", self)
 		bookc_btn.triggered.connect(self.navigate_homesonc)
 		bnavtb.addAction(bookc_btn)
 		bnavtb.addSeparator()
@@ -163,103 +163,75 @@ class MainWindow(QMainWindow):
 		bnavtb.addAction(bookq_btn)
 		bnavtb.addSeparator()
   
-		self.add_new_tab(QUrl('http://www.bing.com'), 'Homepage')
-		self.show()
-  
+		self.add_new_tab(QUrl('http://www.duckduckgo.com'), 'Homepage')
 		self.setWindowTitle("WebSurge")
-  
+		self.show()
 	
 	def add_new_tab(self, qurl = None, label ="Blank"):
-
 		if qurl is None:
-			qurl = QUrl('http://www.bing.com')
-
+			qurl = QUrl('http://www.duckduckgo.com')
 		browser = QWebEngineView()
-
 		browser.setUrl(qurl)
-
 		i = self.tabs.addTab(browser, label)
 		self.tabs.setCurrentIndex(i)
-
 		browser.urlChanged.connect(lambda qurl, browser = browser:
 								self.update_urlbar(qurl, browser))
-
 		browser.loadFinished.connect(lambda _, i = i, browser = browser:
 									self.tabs.setTabText(i, browser.page().title()))
 
 	def tab_open_doubleclick(self, i):
-
 		if i == -1:
 			self.add_new_tab()
 
 
 	def current_tab_changed(self, i):
-
 		qurl = self.tabs.currentWidget().url()
-
 		self.update_urlbar(qurl, self.tabs.currentWidget())
-
 		self.update_title(self.tabs.currentWidget())
 
 	def close_current_tab(self, i):
-
 		if self.tabs.count() < 2:
 			return
-
 		self.tabs.removeTab(i)
   
 	def update_title(self, browser):
-
 		if browser != self.tabs.currentWidget():
 			return
-
+		
 		title = self.tabs.currentWidget().page().title()
-
 		self.setWindowTitle("% s - WebSurge" % title)
 
 	def navigate_home(self):
-
-		self.tabs.currentWidget().setUrl(QUrl("http://www.bing.com"))
+		self.tabs.currentWidget().setUrl(QUrl("http://www.duckduckgo.com"))
 
 	def navigate_to_url(self):
-
 		q = QUrl(self.urlbar.text())
-
 		if q.scheme() == "":
 			q.setScheme("https")
 
 		self.tabs.currentWidget().setUrl(q)
   
 	def navigate_to_search(self):
-		q = self.search.text()
-  
+		q = self.search.text()  
 		qur = QUrl("https://www.google.com/search?q=%s" % q)
 		self.tabs.currentWidget().setUrl(qur)
 
 	def update_urlbar(self, q, browser = None):
-
 		if browser != self.tabs.currentWidget():
-
 			return
-
 		self.urlbar.setText(q.toString())
-
 		self.urlbar.setCursorPosition(0)
   
 	def navigate_homesurge(self):
-    
 		self.tabs.currentWidget().setUrl(QUrl("http://www.google.com"))
   
 	def navigate_homeson(self):
-    
 		self.tabs.currentWidget().setUrl(QUrl("http://www.youtube.com"))
   
 	def navigate_homesonc(self):
-        
-		self.tabs.currentWidget().setUrl(QUrl("http://www.bing.com"))
+		self.tabs.currentWidget().setUrl(QUrl("http://www.duckduckgo.com"))
 
 	def navigate_homesond(self):
-        
 		self.tabs.currentWidget().setUrl(QUrl("https://www.google.com/doodles"))
   
 	def navigate_homesone(self):
