@@ -7,7 +7,9 @@ It is not perfect as yet but i will do my best to keep working on it.
 
 In aid of this project I will be creating a search engine specifically for WebSurge called SurgeEngine.
 
-This is in hopes of making it quite unique. I will update you shortly on this
+This is in hopes of making it quite unique. I will update you shortly on this.
+
+Also when im finished ill upload an exe, 
 
 # Features of WebSurge - Including Upcoming
 
