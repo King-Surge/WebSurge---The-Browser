@@ -18,6 +18,7 @@ This is in hopes of making it quite unique. I will update you shortly on this
 5. As mentioned in the introduction WebSurge will have it's own search engine
 6. Working on WebSurge to open PDF files
 7. Working on WebSurge to Be Able to download files
+8. Working on Icons For Each Bookmark
 
 # Images Of WebSurge
 
